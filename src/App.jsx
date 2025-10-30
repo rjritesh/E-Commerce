@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div className="bg-zinc-900 min-h-screen text-white">
       <Header />
-      <Suspense fallback={<h1 className="text-center mt-10 text-2xl">waitttt</h1>}>
+      <Suspense fallback={<h1 className="text-center mt-10 text-2xl">Loadin...</h1>}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetails />} />
