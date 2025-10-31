@@ -1,16 +1,46 @@
-# React + Vite
+# 🛍️ ShopVerse
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ShopVerse is a responsive and modern e-commerce web app built with **React**, **Tailwind CSS**, and **Redux Toolkit**.  
+It supports **product searching**, **sorting**, and a fully functional **shopping cart**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- 🔍 **Search and Sort** products by name or price  
+- 🛒 **Add to Cart / Remove from Cart** using Redux Toolkit  
+- 💰 **Dynamic Price Calculation** and Cart Summary  
+- 🧭 **Routing** with React Router  
+- 📱 Fully responsive UI (mobile to desktop)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧑‍💻 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Category | Technology |
+|-----------|-------------|
+| Frontend | React.js, Tailwind CSS |
+| State Management | Redux Toolkit |
+| Routing | React Router DOM |
+| Icons | React Icons |
+| Data Source | [Fake Store API](https://fakestoreapi.com/) |
+
+---
+
+## ⚙️ How to Run the Project
+
+### 1. Clone this repository
+```bash
+git clone https://github.com/rjritesh/ShopVerse.git
+cd ShopVerse
+```
+### 2. Install dependencies
+```bash
+npm install
+```
+### 3. Run the app locally
+```bash
+npm run dev
+```
+
+
