@@ -4,6 +4,8 @@ import { FaStar } from "react-icons/fa";
 import { IoArrowBack } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../utils/cartSlice";
+import { toast } from "react-toastify";
+
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -113,11 +115,15 @@ const ProductDetails = () => {
               </div>
 
               <button
-                onClick={() => dispatch(addToCart(product))}
+                onClick={() => {
+                  dispatch(addToCart(product));
+                  toast.success("Item added to cart!");
+                }}
                 className="w-full mt-4 bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium py-3 rounded-xl shadow-md transition-all duration-200 cursor-pointer"
               >
                 Add to Cart
               </button>
+
             </div>
           </div>
         </div>
