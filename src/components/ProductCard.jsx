@@ -42,12 +42,7 @@ const ProductCard = ({ product }) => {
             <span className="text-base font-bold text-blue-600 dark:text-blue-400">
               ${product.price}
             </span>
-            <button
-              className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-md transition-colors duration-200 shadow-sm hover:shadow-md"
-              aria-label="Add to cart"
-            >
-              <CgShoppingCart className="w-4 h-4" />
-            </button>
+           
           </div>
         </div>
       </div>

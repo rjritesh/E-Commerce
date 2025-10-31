@@ -49,7 +49,7 @@ const CartPage = () => {
                   {item.title}
                 </h3>
                 <p className="text-blue-500 dark:text-blue-400 font-semibold">
-                  ₹{item.price.toFixed(2)}
+                  ${item.price.toFixed(2)}
                 </p>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">
                   Quantity: {item.quantity}
@@ -72,22 +72,23 @@ const CartPage = () => {
         <div className="flex justify-between text-lg font-medium mb-4">
           <span>Total:</span>
           <span className="text-blue-500 dark:text-blue-400 font-semibold">
-            ₹{total.toFixed(2)}
+            ${total.toFixed(2)}
           </span>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4">
           <button
             onClick={() => dispatch(clearCart())}
-            className="flex-1 bg-amber-500/90 hover:bg-amber-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors duration-200"
+            className="flex-1 bg-amber-500/90 hover:bg-amber-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors duration-200 cursor-pointer"
           >
             Clear Cart
           </button>
           <button
-            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors duration-200"
+            className="flex-1 bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors duration-200"
           >
             Proceed to Checkout
           </button>
+
         </div>
       </div>
     </div>
