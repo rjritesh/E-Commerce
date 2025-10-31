@@ -4,6 +4,7 @@ import { CgShoppingCart } from 'react-icons/cg'
 import { Link } from 'react-router-dom'
 
 const ProductCard = ({ product }) => {
+  
   return (
     <Link to={`/product/${product.id}`}>
       <div className="bg-white dark:bg-zinc-800 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer overflow-hidden group border border-zinc-200 dark:border-zinc-700 w-[220px] sm:w-[250px]">

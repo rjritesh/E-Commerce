@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { IoArrowBack } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../utils/cartSlice";
 
 const ProductDetails = () => {
+  const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
@@ -108,8 +111,16 @@ const ProductDetails = () => {
                 <span className="font-medium text-zinc-900 dark:text-white">
                   {product.rating?.count}
                 </span>
+
               </div>
+              <button
+                onClick={() => dispatch(addToCart(product))}
+                className="mt-3 bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded"
+              >
+                Add to Cart
+              </button>
             </div>
+
           </div>
         </div>
       </div>
