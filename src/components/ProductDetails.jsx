@@ -11,7 +11,7 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
-  const { product, loading, error } = useFetchProductDetails(id);
+  const { product, loading } = useFetchProductDetails(id);
 
   if (loading)
     return (
@@ -20,17 +20,9 @@ const ProductDetails = () => {
       </h1>
     );
 
-  if (error)
-    return (
-      <h1 className="text-red-500 text-center mt-20 text-2xl font-medium">
-        {error}
-      </h1>
-    );
-
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        {/* Back button */}
         <button
           onClick={() => navigate("/")}
           className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 mb-10 transition-all duration-200 group cursor-pointer"
@@ -39,9 +31,7 @@ const ProductDetails = () => {
           Back to Products
         </button>
 
-        {/* Product layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Image section */}
           <div className="rounded-2xl p-3 shadow-lg flex justify-center items-center">
             <img
               src={product.image}
@@ -50,7 +40,6 @@ const ProductDetails = () => {
             />
           </div>
 
-          {/* Info section */}
           <div className="flex flex-col justify-between space-y-6">
             <div>
               <span className="inline-block px-3 py-1 bg-linear-to-r from-blue-600 to-indigo-600 text-white text-sm font-medium rounded-full mb-3">
@@ -77,7 +66,6 @@ const ProductDetails = () => {
               </p>
             </div>
 
-            {/* Description */}
             <div className="border-t border-zinc-200 dark:border-zinc-700 pt-6">
               <h2 className="text-xl font-semibold text-zinc-900 dark:text-white mb-3">
                 Description
@@ -87,7 +75,6 @@ const ProductDetails = () => {
               </p>
             </div>
 
-            {/* Extra Info + Add to Cart */}
             <div className="bg-zinc-100 dark:bg-zinc-800 rounded-2xl p-6 space-y-4 shadow-sm">
               <div className="flex justify-between">
                 <span className="text-zinc-600 dark:text-zinc-400">
@@ -128,5 +115,4 @@ const ProductDetails = () => {
     </div>
   );
 };
-
 export default ProductDetails;
