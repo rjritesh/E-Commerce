@@ -13,10 +13,16 @@ const Home = () => {
   );
 
   let finalProducts = [...searchedProducts];
+
+  // Sorting logic
   if (sortOrder === "asc") {
     finalProducts.sort((a, b) => a.price - b.price);
   } else if (sortOrder === "desc") {
     finalProducts.sort((a, b) => b.price - a.price);
+  } else if (sortOrder === "az") {
+    finalProducts.sort((a, b) => a.title.localeCompare(b.title));
+  } else if (sortOrder === "za") {
+    finalProducts.sort((a, b) => b.title.localeCompare(a.title));
   }
 
   return (
@@ -42,6 +48,8 @@ const Home = () => {
           <option value="default">Sort by</option>
           <option value="asc">Price: Low to High</option>
           <option value="desc">Price: High to Low</option>
+          <option value="az">Name: A to Z</option>
+          <option value="za">Name: Z to A</option>
         </select>
       </div>
 
