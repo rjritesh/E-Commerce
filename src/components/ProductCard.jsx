@@ -20,6 +20,14 @@ const ProductCard = ({ product }) => {
         <div className="relative bg-zinc-100 dark:bg-zinc-700 
                         h-40 sm:h-[180px] md:h-[200px] 
                         flex items-center justify-center overflow-hidden">
+
+          {/* Category tag on top */}
+          <span className="absolute  top-2 left-2 z-1 border border-gray-50
+                          text-white  bg-zinc-700
+                          text-[10px] sm:text-xs font-sm 
+                          px-2 py-1 rounded-full capitalize">
+            {product.category}
+          </span>
           <img
             src={product.image}
             alt={product.title}
