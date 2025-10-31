@@ -3,14 +3,19 @@ import { removeFromCart, clearCart } from "../utils/cartSlice";
 import { GiShoppingCart } from "react-icons/gi";
 
 const CartPage = () => {
+  // Accessing cart items from Redux store
   const { items } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
+  // If cart is empty, show empty message
   if (items.length === 0)
     return (
       <div className="flex flex-col items-center justify-center min-h-[80vh] text-center px-6">
         <div className="bg-white dark:bg-zinc-800 p-10 rounded-2xl shadow-md border border-zinc-200 dark:border-zinc-700">
+          {/* Empty cart icon */}
           <GiShoppingCart className="text-6xl text-blue-600 dark:text-blue-400 mb-4 mx-auto" />
+
+          {/* Message when no products in cart */}
           <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
             Your cart is empty
           </h2>
@@ -21,7 +26,7 @@ const CartPage = () => {
       </div>
     );
 
-
+  // Calculate total price of all cart items
   const total = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -29,14 +34,17 @@ const CartPage = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10 text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
+      {/* Page heading */}
       <h2 className="text-3xl font-bold mb-8 text-center">Your Cart</h2>
 
+      {/* Looping through each cart item */}
       <div className="space-y-6">
         {items.map((item) => (
           <div
             key={item.id}
             className="flex flex-col sm:flex-row items-center justify-between bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 p-4 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200"
           >
+            {/* Product info section */}
             <div className="flex items-center gap-4 w-full sm:w-auto">
               <img
                 src={item.image}
@@ -56,6 +64,7 @@ const CartPage = () => {
               </div>
             </div>
 
+            {/* Remove button */}
             <button
               onClick={() => dispatch(removeFromCart(item.id))}
               className="mt-4 sm:mt-0 bg-red-600/90 hover:bg-red-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200 cursor-pointer"
@@ -66,6 +75,7 @@ const CartPage = () => {
         ))}
       </div>
 
+      {/* Total and buttons section */}
       <div className="mt-10 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 p-6 rounded-2xl shadow-sm">
         <div className="flex justify-between text-lg font-medium mb-4">
           <span>Total:</span>
@@ -73,13 +83,17 @@ const CartPage = () => {
             ${total.toFixed(2)}
           </span>
         </div>
+
         <div className="flex flex-col sm:flex-row gap-4">
+          {/* Button to clear all items */}
           <button
             onClick={() => dispatch(clearCart())}
             className="flex-1 bg-amber-500/90 hover:bg-amber-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors duration-200 cursor-pointer"
           >
             Clear Cart
           </button>
+
+          {/* Dummy checkout button */}
           <button
             className="flex-1 bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors duration-200"
           >
@@ -90,4 +104,5 @@ const CartPage = () => {
     </div>
   );
 };
+
 export default CartPage;
