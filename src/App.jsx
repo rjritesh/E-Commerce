@@ -17,7 +17,7 @@ const App = () => {
       <Header />
 
       {/* main content area */}
-      <main className="flex-grow px-3 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+      <main className="grow px-3 sm:px-6 md:px-8 lg:px-10 xl:px-12">
         <Suspense
           fallback={<h1 className="text-center mt-10 text-2xl">Loading...</h1>}
         >
