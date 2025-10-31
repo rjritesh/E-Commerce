@@ -44,7 +44,7 @@ const ProductDetails = () => {
         {/* Product layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Image section */}
-          <div className="bg-white dark:bg-zinc-800 rounded-2xl p-6 shadow-lg flex justify-center items-center">
+          <div className=" rounded-2xl p-3 shadow-lg flex justify-center items-center">
             <img
               src={product.image}
               alt={product.title}
