@@ -1,23 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ProductCard from "./ProductCard";
 import Shimmer from "./Shimmer";
+import useFetchProducts from "../hooks/useFetchProduct";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { products, isLoading } = useFetchProducts();
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("default");
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const fetchProducts = async () => {
-    const res = await fetch("https://fakestoreapi.com/products");
-    const data = await res.json();
-    setProducts(data);
-    setIsLoading(false);
-  };
 
   const searchedProducts = products.filter((item) =>
     item.title.toLowerCase().includes(searchTerm.toLowerCase())

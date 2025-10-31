@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, clearCart } from "../utils/cartSlice";
 import { GiShoppingCart } from "react-icons/gi";
@@ -22,7 +21,7 @@ const CartPage = () => {
       </div>
     );
 
-  // Calculate total price
+
   const total = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -67,7 +66,6 @@ const CartPage = () => {
         ))}
       </div>
 
-      {/* Summary Section */}
       <div className="mt-10 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 p-6 rounded-2xl shadow-sm">
         <div className="flex justify-between text-lg font-medium mb-4">
           <span>Total:</span>
@@ -75,7 +73,6 @@ const CartPage = () => {
             ${total.toFixed(2)}
           </span>
         </div>
-
         <div className="flex flex-col sm:flex-row gap-4">
           <button
             onClick={() => dispatch(clearCart())}
@@ -88,11 +85,9 @@ const CartPage = () => {
           >
             Proceed to Checkout
           </button>
-
         </div>
       </div>
     </div>
   );
 };
-
 export default CartPage;

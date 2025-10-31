@@ -1,31 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { IoArrowBack } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../utils/cartSlice";
 import { toast } from "react-toastify";
-
+import { useFetchProductDetails } from "../hooks/useFetchProductDetails";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
-  const [product, setProduct] = useState(null);
+  const { product, loading, error } = useFetchProductDetails(id);
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const res = await fetch(`https://fakestoreapi.com/products/${id}`);
-      const data = await res.json();
-      setProduct(data);
-    };
-    fetchProduct();
-  }, [id]);
-
-  if (!product)
+  if (loading)
     return (
       <h1 className="text-zinc-800 dark:text-zinc-100 text-center mt-20 text-2xl font-medium">
         Loading...
+      </h1>
+    );
+
+  if (error)
+    return (
+      <h1 className="text-red-500 text-center mt-20 text-2xl font-medium">
+        {error}
       </h1>
     );
 
@@ -44,7 +42,7 @@ const ProductDetails = () => {
         {/* Product layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Image section */}
-          <div className=" rounded-2xl p-3 shadow-lg flex justify-center items-center">
+          <div className="rounded-2xl p-3 shadow-lg flex justify-center items-center">
             <img
               src={product.image}
               alt={product.title}
@@ -55,7 +53,7 @@ const ProductDetails = () => {
           {/* Info section */}
           <div className="flex flex-col justify-between space-y-6">
             <div>
-              <span className="inline-block px-3 py-1 bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-medium rounded-full mb-3">
+              <span className="inline-block px-3 py-1 bg-linear-to-r from-blue-600 to-indigo-600 text-white text-sm font-medium rounded-full mb-3">
                 {product.category?.charAt(0).toUpperCase() +
                   product.category?.slice(1)}
               </span>
@@ -123,7 +121,6 @@ const ProductDetails = () => {
               >
                 Add to Cart
               </button>
-
             </div>
           </div>
         </div>
