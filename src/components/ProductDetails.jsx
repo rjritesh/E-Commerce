@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../utils/cartSlice";
 import { toast } from "react-toastify";
 import { useFetchProductDetails } from "../hooks/useFetchProductDetails";
+import ProductDetailsShimmer from "./ProductDetailsShimmer";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -13,12 +14,7 @@ const ProductDetails = () => {
   const navigate = useNavigate();
   const { product, loading } = useFetchProductDetails(id);
 
-  if (loading)
-    return (
-      <h1 className="text-zinc-800 dark:text-zinc-100 text-center mt-20 text-2xl font-medium">
-        Loading...
-      </h1>
-    );
+  if (loading) return <ProductDetailsShimmer />;
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-900 transition-colors duration-300">
